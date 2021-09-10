@@ -58,9 +58,8 @@ for (var i in data){
     });
 
     var content = `<div class='infowindow_wrap'>
-    <div class='infowindow_title'>${target.title}</div>
-    <div class='infowindow_content'>${target.content}</div>
-    <div class='infowindow_date'>${target.date}</div>
+    <div class='infowindow_company'>${target.address}</div>
+    <div class='infowindow_address'>${target.company}</div>
     </div>`;
 
     var infoWindow = new naver.maps.InfoWindow({
