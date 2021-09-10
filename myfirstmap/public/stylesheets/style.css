@@ -59,8 +59,8 @@ body {
   border:1px solid black;
   background : green;
   opacity : 0.8;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   border-radius : 50%;
 }
 
@@ -70,12 +70,12 @@ body {
   border : 1px solid rgba(0,0,0,0.2);
 }
 
-.infowindow_title {
+.infowindow_company {
   font-size:15px; 
   font-weight: bolder;
 }
 
-.infowindow_content {
+.infowindow_address {
   font-size: 13px;
   font-weight : normal;
 }
