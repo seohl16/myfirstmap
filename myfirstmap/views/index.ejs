@@ -6,23 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>myfirstmap</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=0h8klh3dxv"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+    <div id="current">현재 위치</div>
     <div id="navbar">myfirstmap</div>
     <div id="container"> 
         <div id="box-left">
             <p><img src="img/game48.png" alt="game stick image" ><br>게임</p>
             <p><img src="img/bank48.png" alt="bank image"/><br>금융</p>
-            <p><img src="img/shopping48.png" alt="cart image"/><br>쇼핑</p>
+            <p><img src="img/shop48.png" alt="cart image"/><br>쇼핑</p>
             <p><img src="img/social48.png" alt="social image"/><br>소셜네트워킹</p>
             <p><img src="img/food48.png" alt="food image"><br>음식및음료</p>
             <p><img src="img/life48.png" alt="entertainment image"><br>문화</p>
-            <p><img src="img/etc48.png" alt="plus image"><br>기타</p>
+            <p><img src="img/plus48.png" alt="plus image"><br>기타</p>
         </div>
         <div id="box-center">
-            
-
         </div>
 
         <div id="box-right">
@@ -96,6 +96,34 @@ function getClickHandler(i) {
         }
     }
 }
+
+    //jquery 이용, 현재 위치 받아오기
+    $('#current').click(() => {
+        if ("geolocation" in navigator)
+        {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                const latlng = new naver.maps.LatLng(lat, lng);
+
+                marker = new naver.maps.Marker({
+                    map: map,
+                    position: latlng,
+                    icon : {
+                        content: '<img class="pulse" draggable="false" unselectable="on" src="https://myfirstmap.s3.ap-northeast-2.amazonaws.com/circle.png">',
+                        anchor: new naver.maps.Point(11, 11),
+                    }
+                });
+                map.setZoom(14, false); // 줌 설정
+                map.panTo(latlng);      // 이동
+            });
+
+        }   
+        else
+        {
+            alert("위치정보 사용 불가능");
+        }
+    })
 
 </script>
 
