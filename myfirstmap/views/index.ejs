@@ -136,6 +136,7 @@
         })
 
         let ps = new kakao.maps.services.Places();
+        let search_arr = [];
 
         $("#search_input").on("keydown", function(e){
             if (e.keyCode === 13){
@@ -155,6 +156,13 @@
                     map:map, 
                     position : latlng,
                 })
+                if (search_arr.length == 0){
+                    search_arr.push(marker);
+                } else {
+                    search_arr.push(marker);
+                    let pre_marker = search_arr.splice(0,1);
+                    pre_marker[0].setMap(null);
+                }
             } else {
                 alert("검색결과가 없습니다. ");
             }
