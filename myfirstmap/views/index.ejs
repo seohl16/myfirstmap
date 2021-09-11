@@ -139,10 +139,26 @@
 
         $("#search_input").on("keydown", function(e){
             if (e.keyCode === 13){
-                // alert("엔터");
                 let content = $(this).val();
+                ps.keywordSearch(content, placeSearchCB);
             }
         })
+
+        function placeSearchCB(data, status, pagination){
+            if (status === kakao.maps.services.Status.OK){
+                let target = data[0];
+                console.log(target);
+                const lat = target.y;
+                const lng = target.x;
+                const latlng = new naver.maps.LatLng(lat, lng);
+                marker = new naver.maps.Marker({
+                    map:map, 
+                    position : latlng,
+                })
+            } else {
+                alert("검색결과가 없습니다. ");
+            }
+        }
 
     </script>
 
