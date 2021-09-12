@@ -29,7 +29,12 @@ $("#search_input").on("keydown", function(e){
 
 $("#search_button").on("click", function(e) {
 	let content = $("#search_input").val();
-	ps.keywordSearch(content, placeSearchCB);
+	let content_arr = content.split(',');
+	document.getElementById("result").innerText = null;
+	for (var i of Array(content_arr.length).keys()){
+		ps.keywordSearch(content_arr[i], placeSearchCB);
+	}
+	// ps.keywordSearch(content, placeSearchCB);
 })
 
 function printNewTarget(oldtarget){
@@ -37,7 +42,7 @@ function printNewTarget(oldtarget){
 	console.log(target);
 	let output = '';
 	for (var key in target) {
-		output += key + ':'+ target[key] + ';\n';
+		output += key + ': '+ target[key] + ';\n';
 	}
 	// $.ajax({url:target['place_url'], success: function(data) {alert(data);}});
 	// output += '}'
