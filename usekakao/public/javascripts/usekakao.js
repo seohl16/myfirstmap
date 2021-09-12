@@ -17,7 +17,13 @@ let search_arr = [];
 $("#search_input").on("keydown", function(e){
 	if (e.keyCode === 13){
 		let content = $(this).val();
-		ps.keywordSearch(content, placeSearchCB);
+		let content_arr = content.split(',');
+		document.getElementById("result").innerText = null;
+		for (var i of Array(content_arr.length).keys()){
+			ps.keywordSearch(content_arr[i], placeSearchCB);
+		}
+
+		// ps.keywordSearch(content, placeSearchCB);
 	}
 })
 
@@ -41,7 +47,7 @@ function printNewTarget(oldtarget){
 	// http_req.send();
 	// alert(http_req.responseText);
 	// document.write(http_req.responseText);
-	document.getElementById("result").innerText = output;
+	document.getElementById("result").innerText += output + "\n";
 	return target;
 }
 
