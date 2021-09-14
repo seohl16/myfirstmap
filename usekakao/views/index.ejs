@@ -11,17 +11,23 @@
   </head>
   <body>
     <h1 class="navbar">use kakao</h1>
-    <h3 class="resulttab">
-      <div class="tab_title">result tab</div>
+    <div class="left-box" style="float:left">
+      <h3 class="resulttab">result tab
+      <br>
       <div id="search">
           <input id="search_input" placeholder="회사를 입력해주세요"/>
           <button id="search_button">검색</button>
       </div>
-      <div id="result">
+      <div id="result"></div>
+    </h3>
+      </div>
+    <div class="right-box" style="float:right">
+      <div id="resulturl">
 
       </div>
-    </h3>
-    <script type="text/javascript" src="javascripts/usekakao.js"></script>
-
+    </div>
+    <!-- <script type="module" src="javascripts/usekakao.js"></script> -->
+    <script type="module" src="javascripts/bundle.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>
