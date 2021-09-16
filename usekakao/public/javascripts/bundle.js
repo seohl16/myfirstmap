@@ -18044,11 +18044,17 @@ axios.get(`https://cors-anywhere.herokuapp.com/https://place.map.kakao.com/88365
 // 	});
 
 	function printNewTarget(oldtarget){
-	const {category_group_code, category_group_name, distance, phone, address_name, id, ...target} = oldtarget;
+	const {category_group_code, category_group_name, distance, phone, address_name, id, x, y, ...target} = oldtarget;
+	target.lat = y;
+	target.lng = x;
 	console.log(target);
 	let output = '';
 	for (var key in target) {
-		output += key + ': '+ target[key] + ';\n';
+		if (key == "lat" || key == "lng") {
+			output += key + ': '+ target[key] + ',\n';
+		} else {
+			output += key + ': "'+ target[key] + "\",\n";
+		}
 		// if (key === "place_url"){
 		// 	var aTag = '<p> An absolute URL : <a href="'+ target[key] + '">'+"text"+'</a></p>';
 		// 	var a =  document.getElementById("result")
